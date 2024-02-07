@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
 
-bit10_binary = pd.read_csv("Code/data/binary_strings_palindrome_check.csv", dtype={"X": object})
+bit10_binary = pd.read_csv("data/binary_strings_palindrome_check.csv", dtype={"X": object})
 
 # Extract features (X) and labels (Y)
 X = np.array([list(map(int, x)) for x in bit10_binary["X"]]).T
@@ -52,7 +52,7 @@ def initialize_parameters(n_x, n_h, n_y):
 def forward_propagation(X, parameters):
     W1, b1, W2, b2 = parameters["W1"], parameters["b1"], parameters["W2"], parameters["b2"]
     Z1 = np.dot(W1, X) + b1
-    A1 = sigmoid(Z1)
+    A1 = ReLU(Z1)
     Z2 = np.dot(W2, A1) + b2
     A2 = sigmoid(Z2)
     return A2, Z2, A1, Z1
@@ -71,7 +71,7 @@ def backward_propagation(parameters, A1, A2, Z1, Z2, X, Y):
     dZ2 = A2 - Y
     dW2 = np.dot(dZ2, A1.T) / m
     db2 = np.sum(dZ2, axis=1, keepdims=True) / m
-    dZ1 = np.multiply(np.dot(W2.T, dZ2) ,(A1 * (1 - A1)))
+    dZ1 = np.multiply(np.dot(W2.T, dZ2) ,(dReLU(Z1)))
     dW1 = np.dot(dZ1, X.T) / m
     db1 = np.sum(dZ1, axis=1, keepdims=True) / m
 
@@ -142,24 +142,23 @@ def cross_validation(X, Y, n_h=2, n_folds=4, num_iterations=10000, print_cost=Fa
     return mean_accuracy, all_fold_parameters, mean_precision
 
 
-# Set n_h and num_iterations as needed
 n_h = 2
-num_iterations = 100000
-learning_rate=7
+num_iterations = 10000
+learning_rate=1
 n_folds=4
-# Perform 4-fold cross-validation
+
+# 4-fold cross-validation
 mean_accuracy, all_fold_parameters,mean_precision = cross_validation(X, Y, n_h, n_folds,num_iterations, print_cost=True)
 
 print(f"Average accuracy : {mean_accuracy * 100}% and precision: {mean_precision} over {n_folds} folds")
 
 parameters_fold1 = all_fold_parameters[0]
 
-# Generate a single example for prediction (you can replace this with your actual data)
+# Generate a single example for prediction
 example_to_predict = np.array([[1,1,1,1,1,1,1,1,1,1],[1,1,0,1,1,1,1,1,1,1],[0,1,1,1,1,1,1,1,1,0]]).T
 
-# Make prediction using parameters from fold 1
+# prediction using parameters from fold 1
 prediction_fold1, A2 = predict(parameters_fold1, example_to_predict)
-print("shape of A2:",A2.shape)
-print("Example to predict:", example_to_predict)
-print("A2 :", A2)
+# print("shape of A2:",A2.shape)
+# print("Example to predict:", example_to_predict)
 print("Prediction using fold 1 parameters:", prediction_fold1)
