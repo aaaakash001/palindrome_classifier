@@ -1,0 +1,192 @@
+2024-02-11 12:03:08,636 INFO    StreamThr :23582 [internal.py:wandb_internal():86] W&B internal server running at pid: 23582, started at: 2024-02-11 12:03:08.635130
+2024-02-11 12:03:08,637 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: status
+2024-02-11 12:03:08,641 INFO    WriterThread:23582 [datastore.py:open_for_write():87] open: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/run-1jzzikdv.wandb
+2024-02-11 12:03:08,642 DEBUG   SenderThread:23582 [sender.py:send():382] send: header
+2024-02-11 12:03:08,661 DEBUG   SenderThread:23582 [sender.py:send():382] send: run
+2024-02-11 12:03:09,404 INFO    SenderThread:23582 [dir_watcher.py:__init__():211] watching files in: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files
+2024-02-11 12:03:09,404 INFO    SenderThread:23582 [sender.py:_start_run_threads():1136] run started: 1jzzikdv with start time 1707633188.636863
+2024-02-11 12:03:09,409 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: check_version
+2024-02-11 12:03:09,409 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: check_version
+2024-02-11 12:03:09,563 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: run_start
+2024-02-11 12:03:09,572 DEBUG   HandlerThread:23582 [system_info.py:__init__():27] System info init
+2024-02-11 12:03:09,573 DEBUG   HandlerThread:23582 [system_info.py:__init__():42] System info init done
+2024-02-11 12:03:09,573 INFO    HandlerThread:23582 [system_monitor.py:start():194] Starting system monitor
+2024-02-11 12:03:09,573 INFO    SystemMonitor:23582 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-02-11 12:03:09,573 INFO    HandlerThread:23582 [system_monitor.py:probe():214] Collecting system info
+2024-02-11 12:03:09,574 INFO    SystemMonitor:23582 [interfaces.py:start():190] Started cpu monitoring
+2024-02-11 12:03:09,574 DEBUG   HandlerThread:23582 [system_info.py:probe():151] Probing system
+2024-02-11 12:03:09,574 INFO    SystemMonitor:23582 [interfaces.py:start():190] Started disk monitoring
+2024-02-11 12:03:09,575 INFO    SystemMonitor:23582 [interfaces.py:start():190] Started gpuapple monitoring
+2024-02-11 12:03:09,578 INFO    SystemMonitor:23582 [interfaces.py:start():190] Started memory monitoring
+2024-02-11 12:03:09,579 INFO    SystemMonitor:23582 [interfaces.py:start():190] Started network monitoring
+2024-02-11 12:03:09,583 DEBUG   HandlerThread:23582 [system_info.py:_probe_git():136] Probing git
+2024-02-11 12:03:09,609 DEBUG   HandlerThread:23582 [system_info.py:_probe_git():144] Probing git done
+2024-02-11 12:03:09,609 DEBUG   HandlerThread:23582 [system_info.py:probe():199] Probing system done
+2024-02-11 12:03:09,609 DEBUG   HandlerThread:23582 [system_monitor.py:probe():223] {'os': 'macOS-14.3-arm64-arm-64bit', 'python': '3.11.5', 'heartbeatAt': '2024-02-11T06:33:09.574317', 'startedAt': '2024-02-11T06:33:08.625009', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/aakashagarwal/Documents/GitHub/palindrome_classifier/Code/palindrome/palindrome_4_fold_oversampling_w&b.py', 'codePathLocal': 'Code/palindrome/palindrome_4_fold_oversampling_w&b.py', 'codePath': 'Code/palindrome/palindrome_4_fold_oversampling_w&b.py', 'git': {'remote': 'https://github.com/aaaakash001/palindrome_classifier.git', 'commit': '221f6f5da10d632f52a9d85a28d97c6ccdf740c9'}, 'email': 'aaaakash001@gmail.com', 'root': '/Users/aakashagarwal/Documents/GitHub/palindrome_classifier', 'host': 'Aakashs-MacBook-Pro.local', 'username': 'aakashagarwal', 'executable': '/Users/aakashagarwal/anaconda3/bin/python', 'cpu_count': 11, 'cpu_count_logical': 11, 'disk': {'/': {'total': 460.4317207336426, 'used': 212.23988342285156}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 18.0}}
+2024-02-11 12:03:09,609 INFO    HandlerThread:23582 [system_monitor.py:probe():224] Finished collecting system info
+2024-02-11 12:03:09,609 INFO    HandlerThread:23582 [system_monitor.py:probe():227] Publishing system info
+2024-02-11 12:03:09,609 DEBUG   HandlerThread:23582 [system_info.py:_save_conda():208] Saving list of conda packages installed into the current environment
+2024-02-11 12:03:10,409 INFO    Thread-13 :23582 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/conda-environment.yaml
+2024-02-11 12:03:12,876 DEBUG   HandlerThread:23582 [system_info.py:_save_conda():220] Saving conda packages done
+2024-02-11 12:03:12,877 INFO    HandlerThread:23582 [system_monitor.py:probe():229] Finished publishing system info
+2024-02-11 12:03:12,882 DEBUG   SenderThread:23582 [sender.py:send():382] send: files
+2024-02-11 12:03:12,882 INFO    SenderThread:23582 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-02-11 12:03:12,885 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: python_packages
+2024-02-11 12:03:12,885 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: python_packages
+2024-02-11 12:03:12,886 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-11 12:03:12,886 DEBUG   SenderThread:23582 [sender.py:send():382] send: telemetry
+2024-02-11 12:03:12,886 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: stop_status
+2024-02-11 12:03:12,887 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-11 12:03:13,299 DEBUG   SenderThread:23582 [sender.py:send():382] send: exit
+2024-02-11 12:03:13,299 INFO    SenderThread:23582 [sender.py:send_exit():589] handling exit code: 1
+2024-02-11 12:03:13,300 INFO    SenderThread:23582 [sender.py:send_exit():591] handling runtime: 3
+2024-02-11 12:03:13,301 INFO    SenderThread:23582 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-11 12:03:13,302 INFO    SenderThread:23582 [sender.py:send_exit():597] send defer
+2024-02-11 12:03:13,302 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:13,302 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 0
+2024-02-11 12:03:13,302 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:13,302 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 0
+2024-02-11 12:03:13,302 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 1
+2024-02-11 12:03:13,303 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:13,303 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 1
+2024-02-11 12:03:13,304 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:13,304 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 1
+2024-02-11 12:03:13,305 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 2
+2024-02-11 12:03:13,305 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:13,305 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 2
+2024-02-11 12:03:13,305 INFO    HandlerThread:23582 [system_monitor.py:finish():203] Stopping system monitor
+2024-02-11 12:03:13,305 DEBUG   SystemMonitor:23582 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-02-11 12:03:13,306 DEBUG   SystemMonitor:23582 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-02-11 12:03:13,306 INFO    HandlerThread:23582 [interfaces.py:finish():202] Joined cpu monitor
+2024-02-11 12:03:13,306 DEBUG   SystemMonitor:23582 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-02-11 12:03:13,306 INFO    HandlerThread:23582 [interfaces.py:finish():202] Joined disk monitor
+2024-02-11 12:03:13,307 INFO    HandlerThread:23582 [interfaces.py:finish():202] Joined gpuapple monitor
+2024-02-11 12:03:13,307 INFO    HandlerThread:23582 [interfaces.py:finish():202] Joined memory monitor
+2024-02-11 12:03:13,307 INFO    HandlerThread:23582 [interfaces.py:finish():202] Joined network monitor
+2024-02-11 12:03:13,308 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:13,308 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 2
+2024-02-11 12:03:13,308 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 3
+2024-02-11 12:03:13,308 DEBUG   SenderThread:23582 [sender.py:send():382] send: telemetry
+2024-02-11 12:03:13,308 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:13,308 DEBUG   SenderThread:23582 [sender.py:send():382] send: stats
+2024-02-11 12:03:13,308 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 3
+2024-02-11 12:03:13,309 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:13,309 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 3
+2024-02-11 12:03:13,309 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 4
+2024-02-11 12:03:13,309 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:13,310 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 4
+2024-02-11 12:03:13,310 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:13,310 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 4
+2024-02-11 12:03:13,310 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 5
+2024-02-11 12:03:13,310 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:13,310 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 5
+2024-02-11 12:03:13,310 DEBUG   SenderThread:23582 [sender.py:send():382] send: summary
+2024-02-11 12:03:13,311 INFO    SenderThread:23582 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-11 12:03:13,312 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:13,312 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 5
+2024-02-11 12:03:13,312 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 6
+2024-02-11 12:03:13,312 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:13,312 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 6
+2024-02-11 12:03:13,312 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:13,312 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 6
+2024-02-11 12:03:13,316 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: status_report
+2024-02-11 12:03:13,421 INFO    Thread-13 :23582 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/conda-environment.yaml
+2024-02-11 12:03:13,421 INFO    Thread-13 :23582 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/requirements.txt
+2024-02-11 12:03:13,421 INFO    Thread-13 :23582 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/output.log
+2024-02-11 12:03:13,422 INFO    Thread-13 :23582 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/wandb-summary.json
+2024-02-11 12:03:13,422 INFO    Thread-13 :23582 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/wandb-metadata.json
+2024-02-11 12:03:13,638 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 7
+2024-02-11 12:03:13,638 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:13,639 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 7
+2024-02-11 12:03:13,639 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:13,639 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 7
+2024-02-11 12:03:13,903 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-11 12:03:14,062 INFO    wandb-upload_0:23582 [upload_job.py:push():131] Uploaded file /var/folders/9x/cvl5gvjj3v31p6kyd5_lblgh0000gn/T/tmp0c7_hq04wandb/s1rdvf2n-wandb-metadata.json
+2024-02-11 12:03:14,431 INFO    Thread-13 :23582 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/config.yaml
+2024-02-11 12:03:15,314 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 8
+2024-02-11 12:03:15,314 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: poll_exit
+2024-02-11 12:03:15,314 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:15,315 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 8
+2024-02-11 12:03:15,315 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:15,315 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 8
+2024-02-11 12:03:15,315 INFO    SenderThread:23582 [job_builder.py:build():296] Attempting to build job artifact
+2024-02-11 12:03:15,316 INFO    SenderThread:23582 [job_builder.py:_get_source_type():426] is repo sourced job
+2024-02-11 12:03:15,362 INFO    SenderThread:23582 [job_builder.py:build():402] adding wandb-job metadata file
+2024-02-11 12:03:15,364 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 9
+2024-02-11 12:03:15,365 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:15,365 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 9
+2024-02-11 12:03:15,365 DEBUG   SenderThread:23582 [sender.py:send():382] send: artifact
+2024-02-11 12:03:15,437 INFO    Thread-13 :23582 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/output.log
+2024-02-11 12:03:15,913 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-11 12:03:16,998 INFO    SenderThread:23582 [sender.py:send_artifact():1494] sent artifact job-https___github.com_aaaakash001_palindrome_classifier.git_Code_palindrome_palindrome_4_fold_oversampling_w_b.py - {'id': 'QXJ0aWZhY3Q6NzE5Mjg4MzU0', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEzODg2NTQ2Mw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NzE5Mjg4MzU0', 'versionIndex': 0}}}
+2024-02-11 12:03:16,998 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:16,998 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 9
+2024-02-11 12:03:16,998 INFO    SenderThread:23582 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-02-11 12:03:17,442 INFO    SenderThread:23582 [dir_watcher.py:finish():388] scan: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files
+2024-02-11 12:03:17,443 INFO    SenderThread:23582 [dir_watcher.py:finish():402] scan save: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/requirements.txt requirements.txt
+2024-02-11 12:03:17,443 INFO    SenderThread:23582 [dir_watcher.py:finish():402] scan save: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/output.log output.log
+2024-02-11 12:03:17,444 INFO    SenderThread:23582 [dir_watcher.py:finish():402] scan save: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/config.yaml config.yaml
+2024-02-11 12:03:17,448 INFO    SenderThread:23582 [dir_watcher.py:finish():402] scan save: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/wandb-summary.json wandb-summary.json
+2024-02-11 12:03:17,453 INFO    SenderThread:23582 [dir_watcher.py:finish():402] scan save: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/conda-environment.yaml conda-environment.yaml
+2024-02-11 12:03:17,455 INFO    SenderThread:23582 [dir_watcher.py:finish():402] scan save: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/wandb-metadata.json wandb-metadata.json
+2024-02-11 12:03:17,455 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 10
+2024-02-11 12:03:17,456 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: poll_exit
+2024-02-11 12:03:17,458 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:17,458 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 10
+2024-02-11 12:03:17,459 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:17,459 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 10
+2024-02-11 12:03:17,459 INFO    SenderThread:23582 [file_pusher.py:finish():172] shutting down file pusher
+2024-02-11 12:03:17,924 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-11 12:03:17,924 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: poll_exit
+2024-02-11 12:03:18,119 INFO    wandb-upload_0:23582 [upload_job.py:push():131] Uploaded file /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/requirements.txt
+2024-02-11 12:03:18,300 INFO    wandb-upload_1:23582 [upload_job.py:push():131] Uploaded file /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/output.log
+2024-02-11 12:03:18,360 INFO    wandb-upload_3:23582 [upload_job.py:push():131] Uploaded file /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/wandb-summary.json
+2024-02-11 12:03:18,463 INFO    wandb-upload_2:23582 [upload_job.py:push():131] Uploaded file /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/config.yaml
+2024-02-11 12:03:18,463 INFO    wandb-upload_4:23582 [upload_job.py:push():131] Uploaded file /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/files/conda-environment.yaml
+2024-02-11 12:03:18,669 INFO    Thread-12 (_thread_body):23582 [sender.py:transition_state():617] send defer: 11
+2024-02-11 12:03:18,670 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:18,670 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 11
+2024-02-11 12:03:18,670 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:18,670 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 11
+2024-02-11 12:03:18,670 INFO    SenderThread:23582 [file_pusher.py:join():178] waiting for file pusher
+2024-02-11 12:03:18,671 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 12
+2024-02-11 12:03:18,671 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:18,671 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 12
+2024-02-11 12:03:18,672 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:18,672 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 12
+2024-02-11 12:03:18,672 INFO    SenderThread:23582 [file_stream.py:finish():595] file stream finish called
+2024-02-11 12:03:18,930 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-11 12:03:19,064 INFO    SenderThread:23582 [file_stream.py:finish():599] file stream finish is done
+2024-02-11 12:03:19,065 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 13
+2024-02-11 12:03:19,065 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: poll_exit
+2024-02-11 12:03:19,065 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:19,066 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 13
+2024-02-11 12:03:19,066 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:19,066 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 13
+2024-02-11 12:03:19,067 INFO    SenderThread:23582 [sender.py:transition_state():617] send defer: 14
+2024-02-11 12:03:19,067 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: defer
+2024-02-11 12:03:19,067 DEBUG   SenderThread:23582 [sender.py:send():382] send: final
+2024-02-11 12:03:19,067 INFO    HandlerThread:23582 [handler.py:handle_request_defer():172] handle defer: 14
+2024-02-11 12:03:19,068 DEBUG   SenderThread:23582 [sender.py:send():382] send: footer
+2024-02-11 12:03:19,068 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: defer
+2024-02-11 12:03:19,068 INFO    SenderThread:23582 [sender.py:send_request_defer():613] handle sender defer: 14
+2024-02-11 12:03:19,069 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-11 12:03:19,070 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: poll_exit
+2024-02-11 12:03:19,070 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-11 12:03:19,071 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: poll_exit
+2024-02-11 12:03:19,071 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: server_info
+2024-02-11 12:03:19,072 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: server_info
+2024-02-11 12:03:19,074 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: get_summary
+2024-02-11 12:03:19,075 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: sampled_history
+2024-02-11 12:03:19,075 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-11 12:03:19,076 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: job_info
+2024-02-11 12:03:19,511 DEBUG   SenderThread:23582 [sender.py:send_request():409] send_request: job_info
+2024-02-11 12:03:19,512 INFO    MainThread:23582 [wandb_run.py:_footer_history_summary_info():3866] rendering history
+2024-02-11 12:03:19,513 INFO    MainThread:23582 [wandb_run.py:_footer_history_summary_info():3898] rendering summary
+2024-02-11 12:03:19,513 INFO    MainThread:23582 [wandb_run.py:_footer_sync_info():3825] logging synced files
+2024-02-11 12:03:19,514 DEBUG   HandlerThread:23582 [handler.py:handle_request():146] handle_request: shutdown
+2024-02-11 12:03:19,514 INFO    HandlerThread:23582 [handler.py:finish():869] shutting down handler
+2024-02-11 12:03:20,080 INFO    WriterThread:23582 [datastore.py:close():296] close: /Users/aakashagarwal/Documents/GitHub/palindrome_classifier/wandb/run-20240211_120308-1jzzikdv/run-1jzzikdv.wandb
+2024-02-11 12:03:20,514 INFO    SenderThread:23582 [sender.py:finish():1572] shutting down sender
+2024-02-11 12:03:20,515 INFO    SenderThread:23582 [file_pusher.py:finish():172] shutting down file pusher
+2024-02-11 12:03:20,515 INFO    SenderThread:23582 [file_pusher.py:join():178] waiting for file pusher

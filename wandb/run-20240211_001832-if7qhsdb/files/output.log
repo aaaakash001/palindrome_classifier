@@ -1,0 +1,31 @@
+shape of X: (10, 1024)
+shape of Y: (1, 1024)
+Number of palindromes: 32
+Fold: 1, Cost after iteration 0: 0.6930145759626262
+Fold: 1, Cost after iteration 1000: 0.13774397207960584
+Fold: 1, Cost after iteration 2000: 0.11313619410073357
+Fold: 1, Cost after iteration 3000: 0.02014955195296686
+Fold: 1, Cost after iteration 4000: 0.005452083393616677
+Fold: 1, Accuracy: 100.0%, Precision: 1.0
+Fold: 2, Cost after iteration 0: 0.6930174701630388
+Fold: 2, Cost after iteration 1000: 0.11871769823642063
+Fold: 2, Cost after iteration 2000: 0.1053373493035721
+Fold: 2, Cost after iteration 3000: 0.03532127188428477
+Fold: 2, Cost after iteration 4000: 0.006145739577546032
+Fold: 2, Accuracy: 100.0%, Precision: 1.0
+Fold: 3, Cost after iteration 0: 0.6930167648898339
+Fold: 3, Cost after iteration 1000: 0.1320125255238317
+Fold: 3, Cost after iteration 2000: 0.11707181091668147
+Fold: 3, Cost after iteration 3000: 0.039128465473537745
+Fold: 3, Cost after iteration 4000: 0.009003165996607686
+Fold: 3, Accuracy: 100.0%, Precision: 1.0
+Fold: 4, Cost after iteration 0: 0.693010411956227
+Fold: 4, Cost after iteration 1000: 0.157713819499924
+Fold: 4, Cost after iteration 2000: 0.07992217659134158
+Fold: 4, Cost after iteration 3000: 0.01180712319725038
+Fold: 4, Cost after iteration 4000: 0.004406590125191225
+Fold: 4, Accuracy: 100.0%, Precision: 1.0
+Average accuracy over 4 folds: 100.0%
+Average precision over 4 folds: 1.0
+Average accuracy : 100.0% and precision: 1.0 over 4 folds
+Prediction using fold 1 parameters: [[1 0 1]]

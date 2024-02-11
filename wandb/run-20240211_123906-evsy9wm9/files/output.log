@@ -1,0 +1,60 @@
+shape of X: (10, 1984)
+shape of Y: (1, 1984)
+Number of palindromes: 992
+Fold: 1, Accuracy: 68.75%, Precision: 0.6134663341645885
+Number of 1's predicted: 401 Number of 1's in actual: 246
+Number of 0's predicted: 95 Number of 0's in actual: 250
+Fold: 2, Accuracy: 71.57258064516128%, Precision: 0.6328125
+Number of 1's predicted: 384 Number of 1's in actual: 243
+Number of 0's predicted: 112 Number of 0's in actual: 253
+Fold: 3, Accuracy: 71.57258064516128%, Precision: 0.6289473684210526
+Number of 1's predicted: 380 Number of 1's in actual: 239
+Number of 0's predicted: 116 Number of 0's in actual: 257
+Fold: 4, Accuracy: 72.78225806451613%, Precision: 0.6616541353383458
+Number of 1's predicted: 399 Number of 1's in actual: 264
+Number of 0's predicted: 97 Number of 0's in actual: 232
+Average accuracy over 4 folds: 71.16935483870968%
+Average precision over 4 folds: 0.6342200844809968
+Average accuracy : 71.16935483870968% and precision: 0.6342200844809968 over 4 folds
+shape of A2: (1, 2)
+Example to predict:
+ [[1 0]
+ [1 1]
+ [0 1]
+ [1 1]
+ [1 1]
+ [1 1]
+ [1 1]
+ [1 1]
+ [1 1]
+ [1 0]]
+Prediction using fold 1 parameters: [[1 1]]
+A2 : [[0.53572555 0.71083789]]
+Z2 : [[0.14314612 0.89945695]]
+A1 : [[0.         0.        ]
+ [0.         0.59267722]
+ [0.         0.        ]
+ [0.00536536 0.        ]]
+Z1 : [[-1.17900641 -0.26526299]
+ [-0.8645124   0.59267722]
+ [-0.08515381 -0.06708646]
+ [ 0.00536536 -0.0074376 ]]
+fold 1 parameters: {'W1': array([[ 1.45152935e+00, -1.47002741e-01,  8.22579879e-01,
+        -1.21058848e+00, -6.06532693e-01,  5.60524690e-01,
+         1.16746354e+00, -8.64049195e-01,  1.06272664e-01,
+        -1.54269289e+00],
+       [-5.82396773e-01, -2.81940377e-02,  7.54009624e-02,
+        -1.44856476e-01, -8.83031375e-02,  2.40557093e-02,
+         1.20205967e-01, -9.59912963e-02, -3.91963799e-02,
+        -7.99391881e-01],
+       [ 7.09167004e-02, -3.24382947e-02,  5.67085275e-02,
+        -2.69709578e-02, -1.16272013e-01, -8.82784465e-02,
+         4.39662270e-02,  9.61370248e-03, -2.27755369e-02,
+        -3.22755176e-02],
+       [ 8.70674590e-03,  4.08556585e-03, -2.41769777e-03,
+        -5.18868766e-03, -5.11488547e-03, -3.09298561e-03,
+        -4.78494983e-04, -5.84724959e-03,  4.64262737e-03,
+         1.67850756e-03]]), 'b1': array([[-0.09393065],
+       [ 0.76955591],
+       [ 0.10936033],
+       [ 0.00597421]]), 'W2': array([[-2.89695943,  1.27623317,  0.21626877,  0.01556002]]), 'b2': array([[0.14306263]])}

@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.model_selection import KFold
 from imblearn.over_sampling import SMOTE
 
-bit10_binary = pd.read_csv("data/binary_strings_palindrome_check.csv", dtype={"X": object})
+bit10_binary = pd.read_csv("/Users/aakashagarwal/Documents/GitHub/palindrome_classifier/Code/data/binary_strings_palindrome_check.csv", dtype={"X": object})
 
 X = np.array([list(map(int, x)) for x in bit10_binary["X"]]).T
 Y = np.array(bit10_binary["y"]).reshape((1, -1))
@@ -131,7 +131,7 @@ def cross_validation(X, Y, n_h, n_folds, num_iterations, print_cost=False):
             if print_cost and i % 1000 == 0:
                 print(f"Fold: {fold}, Cost after iteration {i}: {cost}")
 
-        predictions_test, _,_,_,_ = predict(parameters, X_test)
+        predictions_test, A2, Z2, A1, Z1 = predict(parameters, X_test)
         accuracy_test = np.mean(predictions_test == Y_test)
         precision_test = np.sum(np.logical_and(predictions_test == 1, Y_test == 1)) / np.sum(predictions_test == 1) if np.sum(predictions_test == 1) > 0 else 0
         
@@ -151,9 +151,9 @@ def cross_validation(X, Y, n_h, n_folds, num_iterations, print_cost=False):
     return mean_accuracy, all_fold_parameters, mean_precision
 
 
-n_h = 2
+n_h = 10
 num_iterations = 10000
-learning_rate= 1
+learning_rate= 0.2
 n_folds=4
 
 # 4-fold cross-validation

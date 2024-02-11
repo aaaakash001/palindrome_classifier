@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/aakashagarwal/Documents/GitHub/palindrome_classifier/Code/palindrome/palindrome_4_fold_oversampling_w&b.py", line 180, in <module>
+    mean_accuracy, all_fold_parameters,mean_precision = cross_validation(X, Y, n_h, n_folds,num_iterations, print_cost=False)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aakashagarwal/Documents/GitHub/palindrome_classifier/Code/palindrome/palindrome_4_fold_oversampling_w&b.py", line 151, in cross_validation
+    predictions_test, _ = predict(parameters, X_test)
+    ^^^^^^^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+shape of X: (10, 1984)
+shape of Y: (1, 1984)
+Number of palindromes: 992

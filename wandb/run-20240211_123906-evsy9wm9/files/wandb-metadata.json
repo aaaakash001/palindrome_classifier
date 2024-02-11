@@ -1,0 +1,37 @@
+{
+    "os": "macOS-14.3-arm64-arm-64bit",
+    "python": "3.11.5",
+    "heartbeatAt": "2024-02-11T07:09:08.176677",
+    "startedAt": "2024-02-11T07:09:06.773280",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/aakashagarwal/Documents/GitHub/palindrome_classifier/Code/palindrome/palindrome_4_fold_oversampling_w&b.py",
+    "codePathLocal": "Code/palindrome/palindrome_4_fold_oversampling_w&b.py",
+    "codePath": "Code/palindrome/palindrome_4_fold_oversampling_w&b.py",
+    "git": {
+        "remote": "https://github.com/aaaakash001/palindrome_classifier.git",
+        "commit": "221f6f5da10d632f52a9d85a28d97c6ccdf740c9"
+    },
+    "email": "aaaakash001@gmail.com",
+    "root": "/Users/aakashagarwal/Documents/GitHub/palindrome_classifier",
+    "host": "Aakashs-MacBook-Pro.local",
+    "username": "aakashagarwal",
+    "executable": "/Users/aakashagarwal/anaconda3/bin/python",
+    "cpu_count": 11,
+    "cpu_count_logical": 11,
+    "disk": {
+        "/": {
+            "total": 460.4317207336426,
+            "used": 212.24419403076172
+        }
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 18.0
+    }
+}
