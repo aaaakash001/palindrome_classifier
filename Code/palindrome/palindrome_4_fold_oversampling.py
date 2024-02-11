@@ -3,11 +3,11 @@ import numpy as np
 from sklearn.model_selection import KFold
 from imblearn.over_sampling import SMOTE
 from pathlib import Path
-
+import pickle
 import lime
 import lime.lime_tabular
 
-base_path = Path("/Users/sarvam/Documents/cs_772/assignment_1/palindrome_classifier")
+base_path = Path("/Users/aakashagarwal/Documents/GitHub/palindrome_classifier")
 bit10_binary = pd.read_csv(base_path / "Code/data/binary_strings_palindrome_check.csv", dtype={"X": object})
 
 X = np.array([list(map(int, x)) for x in bit10_binary["X"]]).T
@@ -165,8 +165,8 @@ def cross_validation(X, Y, n_h, n_folds, num_iterations, learning_rate, print_co
     return mean_accuracy, all_fold_parameters, mean_precision
 
 def run_model():
-    n_h = 10
-    num_iterations = 10000
+    n_h = 4
+    num_iterations = 20000
     learning_rate= 0.2
     n_folds=4
 
@@ -175,21 +175,37 @@ def run_model():
 
     print(f"\nAverage accuracy : {mean_accuracy * 100}% and precision: {mean_precision} over {n_folds} folds")
 
+    #save model
     parameters_fold1 = all_fold_parameters[0]
+    with open(base_path/"Code/model/model_parameters_oversample.pkl", "wb") as f:
+        pickle.dump(parameters_fold1, f)
 
+    #load model
+    loaded_parameters = load_model()
+
+    #evaluate model    
+    evaluate_model(loaded_parameters)
+    
+
+def load_model():
+    with open(base_path/"Code/model/model_parameters_oversample.pkl", "rb") as f:
+        loaded_parameters = pickle.load(f)
+        return loaded_parameters
+    
+
+def evaluate_model(parameter):
     example_to_predict = np.array([[1,1,0,1,1,1,1,1,1,1],[0,1,1,1,1,1,1,1,1,0]]).T
-
-    print()
-    # prediction using parameters from fold 1
-    prediction_fold1, A2, Z2, A1, Z1 = predict(parameters_fold1, example_to_predict)
-    print("shape of A2:",A2.shape)
+     # prediction using parameters from fold 1
+    prediction, A2, Z2, A1, Z1 = predict(parameter, example_to_predict)
+    print("\nshape of A2:",A2.shape)
     print("Example to predict:\n", example_to_predict)
-    print("Prediction using fold 1 parameters:", prediction_fold1,"\n")
+    print("Prediction using fold 1 parameters:", prediction,"\n")
     print("A2 :", A2)
     print("Z2 :", Z2)
     print("A1 :", A1)
     print("Z1 :", Z1)
-    print("fold 1 parameters:", parameters_fold1)
+    print("fold 1 parameters:", parameter)
+
 
 def main():
     run_model()

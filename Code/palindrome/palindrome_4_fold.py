@@ -1,8 +1,14 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
+from pathlib import Path
+import pickle
 
-bit10_binary = pd.read_csv("/Users/aakashagarwal/Documents/GitHub/palindrome_classifier/Code/data/binary_strings_palindrome_check.csv", dtype={"X": object})
+import lime
+import lime.lime_tabular
+
+base_path = Path("/Users/aakashagarwal/Documents/GitHub/palindrome_classifier")
+bit10_binary = pd.read_csv(base_path / "Code/data/binary_strings_palindrome_check.csv", dtype={"X": object})
 
 # Extract features (X) and labels (Y)
 X = np.array([list(map(int, x)) for x in bit10_binary["X"]]).T
@@ -82,7 +88,7 @@ def backward_propagation(parameters, A1, A2, Z1, Z2, X, Y):
 
     return grads
 
-def update_parameters(parameters, grads):
+def update_parameters(parameters, grads,learning_rate):
     W1, b1, W2, b2 = parameters["W1"], parameters["b1"], parameters["W2"], parameters["b2"]
     dW1, db1, dW2, db2 = grads["dW1"], grads["db1"], grads["dW2"], grads["db2"]
 
@@ -104,7 +110,7 @@ def predict(parameters, X):
     return predictions, A2, Z2, A1, Z1
 
 
-def cross_validation(X, Y, n_h=2, n_folds=4, num_iterations=10000, print_cost=False):
+def cross_validation(X, Y, n_h, n_folds, num_iterations,learning_rate ,print_cost=False):
     kf = KFold(n_splits=n_folds, shuffle=True, random_state=101)
     accuracies = []
     precisions = []
@@ -121,7 +127,7 @@ def cross_validation(X, Y, n_h=2, n_folds=4, num_iterations=10000, print_cost=Fa
             A2, Z2, A1, Z1 = forward_propagation(X_train, parameters)
             cost = compute_cost(A2, Y_train)
             grads = backward_propagation(parameters, A1, A2, Z1, Z2, X_train, Y_train)
-            parameters = update_parameters(parameters, grads)
+            parameters = update_parameters(parameters, grads,learning_rate)
 
             if print_cost and i % 1000 == 0:
                 print(f"Fold: {fold}, Cost after iteration {i}: {cost}")
@@ -142,23 +148,51 @@ def cross_validation(X, Y, n_h=2, n_folds=4, num_iterations=10000, print_cost=Fa
     return mean_accuracy, all_fold_parameters, mean_precision
 
 
-n_h = 4
-num_iterations = 5000
-learning_rate=0.5
-n_folds=4
+def run_model():
+    n_h = 4
+    num_iterations = 20000
+    learning_rate= 0.2
+    n_folds=4
 
-# 4-fold cross-validation
-mean_accuracy, all_fold_parameters,mean_precision = cross_validation(X, Y, n_h, n_folds,num_iterations, print_cost=True)
+    # 4-fold cross-validation
+    mean_accuracy, all_fold_parameters,mean_precision = cross_validation(X, Y, n_h, n_folds,num_iterations, learning_rate, print_cost=False)
 
-print(f"Average accuracy : {mean_accuracy * 100}% and precision: {mean_precision} over {n_folds} folds")
+    print(f"\nAverage accuracy : {mean_accuracy * 100}% and precision: {mean_precision} over {n_folds} folds")
 
-parameters_fold1 = all_fold_parameters[0]
+    #save model
+    parameters_fold1 = all_fold_parameters[0]
+    with open(base_path/"Code/model/model_parameters.pkl", "wb") as f:
+        pickle.dump(parameters_fold1, f)
 
-# Generate a single example for prediction
-example_to_predict = np.array([[1,1,1,1,1,1,1,1,1,1],[1,1,0,1,1,1,1,1,1,1],[0,1,1,1,1,1,1,1,1,0]]).T
+    #load model
+    loaded_parameters = load_model()
 
-# prediction using parameters from fold 1
-prediction_fold1, A2, Z2, A1, Z1 = predict(parameters_fold1, example_to_predict)
-# print("shape of A2:",A2.shape)
-# print("Example to predict:", example_to_predict)
-print("Prediction using fold 1 parameters:", prediction_fold1)
+    #evaluate model    
+    evaluate_model(loaded_parameters)
+    
+
+def load_model():
+    with open(base_path/"Code/model/model_parameters.pkl", "rb") as f:
+        loaded_parameters = pickle.load(f)
+        return loaded_parameters
+    
+    
+def evaluate_model(parameter):
+    example_to_predict = np.array([[1,1,0,1,1,1,1,1,1,1],[0,1,1,1,1,1,1,1,1,0]]).T
+     # prediction using parameters from fold 1
+    prediction, A2, Z2, A1, Z1 = predict(parameter, example_to_predict)
+    print("\nshape of A2:",A2.shape)
+    print("Example to predict:\n", example_to_predict)
+    print("Prediction using fold 1 parameters:", prediction,"\n")
+    print("A2 :", A2)
+    print("Z2 :", Z2)
+    print("A1 :", A1)
+    print("Z1 :", Z1)
+    print("fold 1 parameters:", parameter)
+
+
+def main():
+    run_model()
+
+if __name__ == '__main__':
+    main()
