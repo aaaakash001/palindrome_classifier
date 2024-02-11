@@ -2,8 +2,13 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
 from imblearn.over_sampling import SMOTE
+from pathlib import Path
 
-bit10_binary = pd.read_csv("/Users/aakashagarwal/Documents/GitHub/palindrome_classifier/Code/data/binary_strings_palindrome_check.csv", dtype={"X": object})
+import lime
+import lime.lime_tabular
+
+base_path = Path("/Users/sarvam/Documents/cs_772/assignment_1/palindrome_classifier")
+bit10_binary = pd.read_csv(base_path / "Code/data/binary_strings_palindrome_check.csv", dtype={"X": object})
 
 X = np.array([list(map(int, x)) for x in bit10_binary["X"]]).T
 Y = np.array(bit10_binary["y"]).reshape((1, -1))
@@ -87,7 +92,7 @@ def backward_propagation(parameters, A1, A2, Z1, Z2, X, Y):
 
     return grads
 
-def update_parameters(parameters, grads):
+def update_parameters(parameters, grads, learning_rate):
     W1, b1, W2, b2 = parameters["W1"], parameters["b1"], parameters["W2"], parameters["b2"]
     dW1, db1, dW2, db2 = grads["dW1"], grads["db1"], grads["dW2"], grads["db2"]
 
@@ -109,15 +114,24 @@ def predict(parameters, X):
     return predictions, A2, Z2, A1, Z1
 
 
-def cross_validation(X, Y, n_h, n_folds, num_iterations, print_cost=False):
+def cross_validation(X, Y, n_h, n_folds, num_iterations, learning_rate, print_cost=False):
+
+    
     kf = KFold(n_splits=n_folds, shuffle=True, random_state=42)
     accuracies = []
     precisions = []
     all_fold_parameters = []
 
     for fold, (train_index, test_index) in enumerate(kf.split(X.T), 1):
+
+
         X_train, X_test = X.T[train_index].T, X.T[test_index].T
         Y_train, Y_test = Y.T[train_index].T, Y.T[test_index].T
+
+        # explainer = lime.lime_tabular.LimeTabularExplainer(X_train, feature_names=X_train.column_names, class_names=np.unique(Y_train), discretize_continuous=True)
+
+        # exp = explainer.explain_instance(test[i], rf.predict_proba, num_features=2, top_labels=1)
+    
 
         n_x, n_h, n_y = layer_sizes(X_train, n_h, Y_train)
         parameters = initialize_parameters(n_x, n_h, n_y)
@@ -126,7 +140,7 @@ def cross_validation(X, Y, n_h, n_folds, num_iterations, print_cost=False):
             A2, Z2, A1, Z1 = forward_propagation(X_train, parameters)
             cost = compute_cost(A2, Y_train)
             grads = backward_propagation(parameters, A1, A2, Z1, Z2, X_train, Y_train)
-            parameters = update_parameters(parameters, grads)
+            parameters = update_parameters(parameters, grads, learning_rate)
 
             if print_cost and i % 1000 == 0:
                 print(f"Fold: {fold}, Cost after iteration {i}: {cost}")
@@ -150,29 +164,35 @@ def cross_validation(X, Y, n_h, n_folds, num_iterations, print_cost=False):
 
     return mean_accuracy, all_fold_parameters, mean_precision
 
+def run_model():
+    n_h = 10
+    num_iterations = 10000
+    learning_rate= 0.2
+    n_folds=4
 
-n_h = 10
-num_iterations = 10000
-learning_rate= 0.2
-n_folds=4
+    # 4-fold cross-validation
+    mean_accuracy, all_fold_parameters,mean_precision = cross_validation(X, Y, n_h, n_folds,num_iterations, learning_rate, print_cost=False)
 
-# 4-fold cross-validation
-mean_accuracy, all_fold_parameters,mean_precision = cross_validation(X, Y, n_h, n_folds,num_iterations, print_cost=False)
+    print(f"\nAverage accuracy : {mean_accuracy * 100}% and precision: {mean_precision} over {n_folds} folds")
 
-print(f"\nAverage accuracy : {mean_accuracy * 100}% and precision: {mean_precision} over {n_folds} folds")
+    parameters_fold1 = all_fold_parameters[0]
 
-parameters_fold1 = all_fold_parameters[0]
+    example_to_predict = np.array([[1,1,0,1,1,1,1,1,1,1],[0,1,1,1,1,1,1,1,1,0]]).T
 
-example_to_predict = np.array([[1,1,0,1,1,1,1,1,1,1],[0,1,1,1,1,1,1,1,1,0]]).T
+    print()
+    # prediction using parameters from fold 1
+    prediction_fold1, A2, Z2, A1, Z1 = predict(parameters_fold1, example_to_predict)
+    print("shape of A2:",A2.shape)
+    print("Example to predict:\n", example_to_predict)
+    print("Prediction using fold 1 parameters:", prediction_fold1,"\n")
+    print("A2 :", A2)
+    print("Z2 :", Z2)
+    print("A1 :", A1)
+    print("Z1 :", Z1)
+    print("fold 1 parameters:", parameters_fold1)
 
-print()
-# prediction using parameters from fold 1
-prediction_fold1, A2, Z2, A1, Z1 = predict(parameters_fold1, example_to_predict)
-print("shape of A2:",A2.shape)
-print("Example to predict:\n", example_to_predict)
-print("Prediction using fold 1 parameters:", prediction_fold1,"\n")
-print("A2 :", A2)
-print("Z2 :", Z2)
-print("A1 :", A1)
-print("Z1 :", Z1)
-print("fold 1 parameters:", parameters_fold1)
+def main():
+    run_model()
+
+if __name__ == '__main__':
+    main()
