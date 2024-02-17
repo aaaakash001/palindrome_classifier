@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
 from imblearn.over_sampling import SMOTE
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 from pathlib import Path
 import pickle
 import csv
@@ -75,7 +76,7 @@ def backward_propagation(parameters, A1, A2, Z1, Z2, X, Y):
     grads = {"dW1": dW1, "db1": db1, "dW2": dW2, "db2": db2}
     return grads
 
-def update_parameters(parameters, grads, learning_rate, beta=0.9):
+def update_parameters(parameters, grads, learning_rate, beta):
     W1, b1, W2, b2 = parameters["W1"], parameters["b1"], parameters["W2"], parameters["b2"]
     dW1, db1, dW2, db2 = grads["dW1"], grads["db1"], grads["dW2"], grads["db2"]
 
@@ -106,13 +107,15 @@ def predict(parameters, X):
     predictions = (A2 >= 0.5).astype(int)
     return predictions, A2, Z2, A1, Z1
 
-def cross_validation(X, Y, n_h, n_folds, num_iterations, learning_rate, print_cost=False):
+
+def cross_validation(X, Y, n_h, n_folds, num_iterations, learning_rate, beta,print_cost=False):
     kf = KFold(n_splits=n_folds, shuffle=True, random_state=42)
     accuracies = []
     precisions = []
     recalls = []
     f1_scores = []
     all_fold_parameters = []
+    con_matrix = []
 
     for fold, (train_index, test_index) in enumerate(kf.split(X.T), 1):
         X_train, X_test = X.T[train_index].T, X.T[test_index].T
@@ -125,27 +128,33 @@ def cross_validation(X, Y, n_h, n_folds, num_iterations, learning_rate, print_co
             A2, Z2, A1, Z1 = forward_propagation(X_train, parameters)
             cost = compute_cost(A2, Y_train)
             grads = backward_propagation(parameters, A1, A2, Z1, Z2, X_train, Y_train)
-            parameters = update_parameters(parameters, grads, learning_rate, beta=0.1)
+            parameters = update_parameters(parameters, grads, learning_rate, beta)
 
             if print_cost and i % 1000 == 0:
                 print(f"Fold: {fold}, Cost after iteration {i}: {cost}")
 
         predictions_test, A2, Z2, A1, Z1 = predict(parameters, X_test)
-        accuracy_test = np.mean(predictions_test == Y_test)
-        precision_test = np.sum(np.logical_and(predictions_test == 1, Y_test == 1)) / np.sum(predictions_test == 1) if np.sum(predictions_test == 1) > 0 else 0
-        recall_test = np.sum(np.logical_and(predictions_test == 1, Y_test == 1)) / np.sum(Y_test == 1) if np.sum(Y_test == 1) > 0 else 0
-        f1_score_test = 2 * (precision_test * recall_test) / (precision_test + recall_test) if (precision_test + recall_test) > 0 else 0
-
+        
+        # Calculate metrics using scikit-learn functions
+        accuracy_test = accuracy_score(Y_test.flatten(), predictions_test.flatten())
+        precision_test = precision_score(Y_test.flatten(), predictions_test.flatten())
+        recall_test = recall_score(Y_test.flatten(), predictions_test.flatten())
+        f1_score_test = f1_score(Y_test.flatten(), predictions_test.flatten())
+        cm = confusion_matrix(Y_test.flatten(), predictions_test.flatten())
+        
         accuracies.append(accuracy_test)
         precisions.append(precision_test)
         recalls.append(recall_test)
         f1_scores.append(f1_score_test)
         all_fold_parameters.append(parameters)
+        con_matrix.append(cm)
 
         print(f"Fold: {fold}, Accuracy: {accuracy_test * 100}%, Precision: {precision_test}, Recall: {recall_test}, F1 Score: {f1_score_test}")
-        print("Number of 1's predicted:", np.sum(predictions_test == 1), "Number of 1's in actual:", np.sum(Y_test == 1))
-        print("Number of 0's predicted:", np.sum(predictions_test == 0), "Number of 0's in actual:", np.sum(Y_test == 0))
-        print()
+        
+        # Calculate and print confusion matrix
+        print("Confusion Matrix:")
+        print(sum(con_matrix))
+        
 
     mean_accuracy = np.mean(accuracies)
     mean_precision = np.mean(precisions)
@@ -158,15 +167,16 @@ def cross_validation(X, Y, n_h, n_folds, num_iterations, learning_rate, print_co
     print(f"Average F1 score over {n_folds} folds: {mean_f1_score}")
 
     return mean_accuracy, all_fold_parameters, mean_precision, mean_recall, mean_f1_score, A2, Z2, A1, Z1
-
 def run_model():
     n_h = 2
-    num_iterations = 5000
+    num_iterations = 20000
     learning_rate = 0.9
+    beta = 0.9
     n_folds = 4
 
+
     # 4-fold cross-validation
-    mean_accuracy, all_fold_parameters, mean_precision, mean_recall, mean_f1_score, A2, Z2, A1, Z1 = cross_validation(X, Y, n_h, n_folds, num_iterations, learning_rate, print_cost=True)
+    mean_accuracy, all_fold_parameters, mean_precision, mean_recall, mean_f1_score, A2, Z2, A1, Z1 = cross_validation(X, Y, n_h, n_folds, num_iterations, learning_rate,beta ,print_cost=True)
 
     print(f"\nAverage accuracy : {mean_accuracy * 100}% and precision: {mean_precision}, recall: {mean_recall}, F1 score: {mean_f1_score} over {n_folds} folds")
 
